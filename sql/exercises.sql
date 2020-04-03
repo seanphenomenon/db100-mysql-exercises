@@ -13,7 +13,7 @@
 ## 1. SELECT statements
 
 # 1a. Select all columns from the actor table.
-select * from actor;
+SELECT * FROM actor;
 
 # 1b. Select only the last_name column from the actor table.
 SELECT last_name FROM actor;
@@ -28,10 +28,17 @@ SELECT last_name FROM actor;
 # rental_rate           Exists in film table.
 # total_rental_cost     rental_duration * rental_rate
 SELECT
+<<<<<<< HEAD
     title, 
     description, 
     rental_duration, 
     rental_rate, 
+=======
+    title,
+    description,
+    rental_duration,
+    rental_rate,
+>>>>>>> 105486b12c42931bec7e25d506889502bd01290a
     rental_duration * rental_rate as total_rental_cost
 FROM film;
 
