@@ -200,19 +200,27 @@ FROM film;
 # Label customer first_name/last_name columns as customer_first_name/customer_last_name
 # Label actor first_name/last_name columns in a similar fashion.
 
+-- shows all customer first/lastnames in full and only matching actor last names
+    SELECT customer.first_name as customer_first_name, customer.last_name as customer_last_name, actor.first_name as actor_first_name, actor.last_name as actor_last_name FROM customer LEFT JOIN actor ON customer.last_name = actor.last_name;
 
 # 9b. Select the customer first_name/last_name and actor first_name/last_name columns from performing a right join between the customer and actor column on the last_name column in each table. (i.e. `customer.last_name = actor.last_name`)
-
+-- shows matching customer/actor last names only; actors last names are listed in full
+    SELECT customer.first_name as customer_first_name, customer.last_name as customer_last_name, actor.first_name as actor_first_name, actor.last_name as actor_last_name FROM customer RIGHT JOIN actor ON customer.last_name = actor.last_name;
 
 # 9c. Select the customer first_name/last_name and actor first_name/last_name columns from performing an inner join between the customer and actor column on the last_name column in each table. (i.e. `customer.last_name = actor.last_name`)
-
+-- shows matching customer/actor last names from both tables
+    SELECT customer.first_name as customer_first_name, customer.last_name as customer_last_name, actor.first_name as actor_first_name, actor.last_name as actor_last_name FROM customer INNER JOIN actor ON customer.last_name = actor.last_name;
 
 # 9d. Select the city name and country name columns from the city table, performing a left join with the country table to get the country name column.
+ -- connects city/country; all city results and matching countries only
+    SELECT city,country FROM city LEFT JOIN country ON city.country_id = country.country_id;
 
 
 # 9e. Select the title, description, release year, and language name columns from the film table, performing a left join with the language table to get the "language" column.
 # Label the language.name column as "language" (e.g. `select language.name as language`)
-
+-- connects laguage of each film ; all english
+    SELECT title, description, release_year, language.name as language FROM film LEFT JOIN language ON film.language_id = language.language_id;
 
 # 9f. Select the first_name, last_name, address, address2, city name, district, and postal code columns from the staff table, performing 2 left joins with the address table then the city table to get the address and city related columns.
-
+ -- connects address/city of each staff member
+    SELECT first_name, last_name, address, address2, city, district, postal_code FROM staff LEFT JOIN address ON staff.address_id = address.address_id LEFT JOIN city ON address.city_id = city.city_id;
