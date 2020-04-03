@@ -141,14 +141,17 @@ FROM film;
 # 6a. Select the following columns from the film table for rows where the description begins with "A Thoughtful".
 # Title, Description, Release Year
 
+    SELECT title, description, release_year FROM film WHERE description LIKE "A Thoughtful%";
 
 # 6b. Select the following columns from the film table for rows where the description ends with the word "Boat".
 # Title, Description, Rental Duration
 
+    SELECT title, description, rental_duration FROM film WHERE description LIKE "%Boat";
 
 # 6c. Select the following columns from the film table where the description contains the word "Database" and the length of the film is greater than 3 hours.
 # Title, Length, Description, Rental Rate
 
+    SELECT title, length, description, rental_rate FROM film WHERE description LIKE '%Database%' AND length > 180;
 
 # ---------------------------------------------------------#
 
@@ -157,12 +160,15 @@ FROM film;
 
 # 7a. Select all columns from the payment table and only include the first 20 rows.
 
+    SELECT * FROM payment LIMIT 20;
 
 # 7b. Select the payment id, payment date and amount columns from the payment table for rows where the payment amount is greater than 5 and only select rows whose zero-based index in the result set is between 51-100.
 
+    SELECT payment_id, payment_date, amount FROM payment WHERE amount > 5 LIMIT 49 OFFSET 50;
 
 # 7c. Select all columns from the customer table, limiting results to those where the zero-based index is between 101-200.
-
+    
+    SELECT * FROM customer LIMIT 100 OFFSET 100;
 
 # ---------------------------------------------------------#
 
@@ -171,16 +177,19 @@ FROM film;
 
 # 8a. Select all columns from the film table and order rows by the length field in ascending order.
 
+    SELECT * FROM film ORDER BY length ASC;
 
 # 8b. Select all distinct ratings from the film table ordered by rating in descending order.
 
+    SELECT DISTINCT rating FROM film ORDER BY rating DESC;
 
 # 8c. Select the payment date and amount columns from the payment table for the first 20 payments ordered by payment amount in descending order.
 
+    SELECT payment_date, amount FROM payment ORDER BY amount DESC LIMIT 20;
 
 # 8d. Select the title, description, special features, length, and rental duration columns from the film table for the first 10 films with behind the scenes footage under 2 hours in length and a rental duration between 5 and 7 days, ordered by length in descending order.
 
-
+    SELECT title, description, special_features, length, rental_duration FROM film WHERE special_features LIKE "Behind The Scenes%" AND length < 120 AND rental_duration BETWEEN 5 AND 7 ORDER BY length DESC;
 # ---------------------------------------------------------#
 
 
